@@ -1,24 +1,6 @@
 # turbo-system
-# 📌 Project Name
+# 📌 Solar System Simulation
 
-A brief description of what this project does and why it exists.  
-Keep it simple, clear, and impactful.
-
----
-
-## 🚀 Features
-- Feature 1  
-- Feature 2  
-- Feature 3  
-
----
-
-## 🛠️ Tech Stack
-- Language / Framework  
-- Tools / Libraries  
-- Platform  
-
----
 
 ## 📂 Project Structure
 # 🌌 Solar System Simulation (HTML • CSS • JavaScript)
