@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Task Manager</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .box {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .edit {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .delete {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Task Manager</h2>
+
+    <!-- Task Form -->
+    <input type="text" id="title" placeholder="Task Title">
+    <textarea id="description" placeholder="Task Description"></textarea>
+
+    <select id="status">
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+    </select>
+
+    <button onclick="addTask()">Add Task</button>
+
+    <!-- Task Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="taskTable"></tbody>
+    </table>
+</div>
+
+<script>
+    let editRow = null;
+
+    function addTask() {
+        let title = document.getElementById("title").value;
+        let description = document.getElementById("description").value;
+        let status = document.getElementById("status").value;
+
+        if (title === "" || description === "") {
+            alert("Please fill all fields");
+            return;
+        }
+
+        if (editRow === null) {
+            let table = document.getElementById("taskTable");
+            let row = table.insertRow();
+
+            row.insertCell(0).innerHTML = title;
+            row.insertCell(1).innerHTML = description;
+            row.insertCell(2).innerHTML = status;
+            row.insertCell(3).innerHTML =
+                `<button class="edit" onclick="editTask(this)">Edit</button>
+                 <button class="delete" onclick="deleteTask(this)">Delete</button>`;
+        } else {
+            editRow.cells[0].innerHTML = title;
+            editRow.cells[1].innerHTML = description;
+            editRow.cells[2].innerHTML = status;
+            editRow = null;
+        }
+
+        document.getElementById("title").value = "";
+        document.getElementById("description").value = "";
+        document.getElementById("status").value = "Pending";
+    }
+
+    function deleteTask(btn) {
+        let row = btn.parentElement.parentElement;
+        row.remove();
+    }
+
+    function editTask(btn) {
+        editRow = btn.parentElement.parentElement;
+        document.getElementById("title").value = editRow.cells[0].innerHTML;
+        document.getElementById("description").value = editRow.cells[1].innerHTML;
+        document.getElementById("status").value = editRow.cells[2].innerHTML;
+    }
+</script>
+
+</body>
+</html>
