@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Circle Animation Under Text</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f0f0;
+    }
+
+    .container {
+      position: relative;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .text {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .line {
+      position: relative;
+      width: 300px;
+      height: 4px;
+      background-color: #333;
+      margin: 0 auto;
+    }
+
+    .circle {
+      position: absolute;
+      top: -8px; /* Raise it so it's centered over the line */
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background-color: #e74c3c;
+      border-radius: 50%;
+      animation: moveCircle 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes moveCircle {
+      from {
+        left: 0;
+      }
+      to {
+        left: calc(100% - 20px); /* Width of line minus circle width */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="text">Hello, I'm some text</div>
+    <div class="line">
+      <div class="circle"></div>
+    </div>
+  </div>
+</body>
+</html>

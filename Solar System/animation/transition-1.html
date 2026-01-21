@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition</title>
+
+    <style>
+
+        body{
+            display:flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center ;
+            background-color:rgb(186, 11, 217);
+        }
+
+     .element{
+        
+        height:200px;
+        width:200px;
+        background: #dadbe5;
+        display:flex;
+        justify-content:center;
+        align-items:center ;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 50px;
+        color:rgb(15, 15, 15);
+
+        animation-duration: 3s;
+        animation-name: spin;
+        animation-timing-function: ease-in-out;
+        animation-delay: 1s;
+        animation-iteration-count:infinite; /*  it controls how many times the animation should play. its default value is 1*/;
+        animation-direction: normal; /*  normal is default value */
+       /* animation-fill-mode: forwards; /* it will stops the animation once its finished */
+    animation-play-state: paused;
+    
+    }
+    .element:hover {
+    animation-play-state: running;
+    
+
+    }
+
+    @keyframes spin {
+      
+        0% {
+
+        }
+
+        50%{
+            scale: 2;
+            transform: rotate(0);
+            border-radius: 0;
+        }
+        100% {
+            transform: rotate(360deg);
+            border-radius: 50%;
+            scale:2;
+         }
+
+
+    }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="element">
+
+        ritik
+
+    </div>
+
+    
+</body>
+</html>
